@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="Calculator.css">
+</head>
+
+<body>
+    <div class="calculator">
+        <input type="text" id="display" disabled>
+        <div class="buttons">
+            <button class="clear">C</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>/</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>*</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>-</button>
+            <button>0</button>
+            <button>.</button>
+            <button>=</button>
+            <button>+</button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const show = document.getElementById('show');
+            document.querySelectorAll('.buttons button').forEach(button => {
+                button.addEventListener('click', function () {
+                    const btnText = this.innerText;
+
+                    if (btnText === '=') {
+                        try {
+                            display.value = eval(display.value);
+                        } catch (e) {
+                            display.value = "Error";
+                        }
+                    } else if (btnText === 'C') {
+                        display.value = '';
+                    } else {
+                        display.value += btnText;
+                    }
+                });
+            });
+        });
+
+    </script>
+</body>
+
+</html>
